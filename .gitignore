@@ -1,0 +1,54 @@
+# ---------- Python / Django (workbridge/) ----------
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+.venv/
+env/
+
+# Database and logs
+db.sqlite3
+db.sqlite3-journal
+*.sqlite3
+*.log
+
+# Uploaded files (MEDIA_ROOT)
+workbridge/media/
+
+# collectstatic output, if you run it
+workbridge/staticfiles/
+
+# Secrets
+.env
+.env.*
+local_settings.py
+*.pem
+*.keystore
+*.jks
+key.properties
+google-services.json
+GoogleService-Info.plist
+
+# ---------- Flutter / Dart (untitled1/) ----------
+untitled1/.dart_tool/
+untitled1/.flutter-plugins
+untitled1/.flutter-plugins-dependencies
+untitled1/.packages
+untitled1/.pub-cache/
+untitled1/.pub/
+untitled1/build/
+untitled1/android/.gradle/
+untitled1/android/local.properties
+untitled1/android/**/GeneratedPluginRegistrant.java
+untitled1/ios/Pods/
+untitled1/ios/**/xcuserdata/
+untitled1/macos/Pods/
+untitled1/pubspec_overrides.yaml
+
+# ---------- IDEs / OS ----------
+.idea/
+*.iml
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
