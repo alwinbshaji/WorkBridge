@@ -1,0 +1,495 @@
+{##}
+{#{% include 'header.html' %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#  <meta charset="UTF-8">#}
+{#  <title>Registration Data Table</title>#}
+{#  <!-- Bootstrap CSS -->#}
+{#  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">#}
+{#  <!-- DataTables CSS -->#}
+{#  <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">#}
+{#</head>#}
+{#<body>#}
+{#  <div class="container mt-5">#}
+{#    <h2 class="mb-4">Registered Users</h2>#}
+{#    <table id="registrationTable" class="table table-striped table-bordered">#}
+{#      <thead>#}
+{#        <tr>#}
+{#          <th>Sl no</th>#}
+{#          <th>Name</th>#}
+{#          <th>LOGIN</th>#}
+{#          <th>ph_no</th>#}
+{#          <th>email</th>#}
+{#          <th>place</th>#}
+{#          <th>latitude</th>#}
+{#          <th>longitude</th>#}
+{#          <th>pin</th>#}
+{#          <th>post</th>#}
+{#          <th>photo</th>#}
+{#          <th>review</th>#}
+{##}
+{#        </tr>#}
+{#      </thead>#}
+{#      <tbody>#}
+{#      {% for i in data %}#}
+{#        <!-- Sample Data Row -->#}
+{#        <tr>#}
+{#          <td>{{ forloop.counter }}</td>#}
+{#          <td>{{ i.name }}</td>#}
+{#          <td>{{ i.review }}</td>#}
+{#          <td>{{ i.ph_no }}</td>#}
+{#          <td>{{ i.email }}</td>#}
+{#          <td>{{ i.place }}</td>#}
+{#          <td>{{ i.latitude }}</td>#}
+{#          <td>{{ i.longitude }}</td>#}
+{#          <td>{{ i.pin }}</td>#}
+{#          <td>{{ i.post }}</td>#}
+{#          <td>{{ i.photo }}</td>#}
+{#          <td>{{ i.review }}</td>#}
+{#        </tr>#}
+{#        <!-- Add more rows dynamically from backend -->#}
+{#      {% endfor %}#}
+{#      </tbody>#}
+{#    </table>#}
+{#  </div>#}
+{##}
+{#  <!-- Scripts -->#}
+{#  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>#}
+{#  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>#}
+{#  <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>#}
+{#  <script>#}
+{#    $(document).ready(function () {#}
+{#      $('#registrationTable').DataTable();#}
+{#    });#}
+{#  </script>#}
+{#</body>#}
+{#</html>#}
+{#{% include 'footer.html' %}#}
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#  <meta charset="UTF-8">#}
+{#  <title>Registration Data Table · Navy · Cyan · White</title>#}
+{#  <!-- Bootstrap CSS (kept for structure, will be overlaid with theme) -->#}
+{#  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">#}
+{#  <!-- DataTables CSS -->#}
+{#  <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">#}
+{#  <!-- custom theme: navy / cyan / white (header & footer untouched) -->#}
+{#  <style>#}
+{#    /* ===== THEME: NAVY + CYAN + WHITE ===== */#}
+{#    /* affects only the container and table area, header/footer remain as original include */#}
+{#    body {#}
+{#      background-color: #eef5fc; /* very subtle cyan tint background, but header/footer outside this scope */#}
+{#      margin: 0;#}
+{#      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;#}
+{#    }#}
+{#    /* main container – navy panel with white table */#}
+{#    .container.mt-5 {#}
+{#      background-color: #0b1f3b; /* deep navy */#}
+{#      border-radius: 28px 28px 24px 24px;#}
+{#      padding: 2rem 1.8rem 2.2rem 1.8rem;#}
+{#      box-shadow: 0 20px 30px -8px rgba(2, 20, 45, 0.5);#}
+{#      border: 1px solid #2c4b74;#}
+{#      max-width: 1400px;#}
+{#    }#}
+{##}
+{#    /* heading in cyan */#}
+{#    .container h2 {#}
+{#      color: #9ee6f8;      /* soft cyan */#}
+{#      font-weight: 600;#}
+{#      letter-spacing: 0.5px;#}
+{#      text-shadow: 0 2px 4px #0a1a2f;#}
+{#      border-left: 6px solid #25c2e0;#}
+{#      padding-left: 20px;#}
+{#      margin-top: 6px;#}
+{#      margin-bottom: 32px;#}
+{#      font-size: 2.2rem;#}
+{#    }#}
+{##}
+{#    /* ---- datatable customisation (navy/cyan/white) ---- */#}
+{#    .table {#}
+{#      background-color: #ffffff;   /* white base */#}
+{#      border-radius: 18px;#}
+{#      overflow: hidden;#}
+{#      box-shadow: 0 8px 20px rgba(0,20,50,0.5);#}
+{#      border: 1px solid #345f8c;#}
+{#      margin-bottom: 0;#}
+{#    }#}
+{##}
+{#    /* table header – navy & cyan */#}
+{#    .table thead {#}
+{#      background-color: #0a2647;   /* rich navy */#}
+{#      color: #d7f2ff;              /* icy cyan-white */#}
+{#      border-bottom: 3px solid #20b8d4;#}
+{#    }#}
+{##}
+{#    .table thead th {#}
+{#      background-color: #0a2647;    /* navy */#}
+{#      color: #cdf2fc;               /* soft cyan */#}
+{#      font-weight: 600;#}
+{#      font-size: 1rem;#}
+{#      text-transform: uppercase;#}
+{#      letter-spacing: 0.4px;#}
+{#      border-right: 1px solid #254b70;#}
+{#      padding: 14px 10px;#}
+{#      vertical-align: middle;#}
+{#    }#}
+{##}
+{#    .table thead th:last-child {#}
+{#      border-right: none;#}
+{#    }#}
+{##}
+{#    /* table body rows white with subtle hover */#}
+{#    .table tbody tr {#}
+{#      background-color: #ffffff;#}
+{#      transition: 0.15s;#}
+{#    }#}
+{##}
+{#    .table tbody tr:hover {#}
+{#      background-color: #e1f3fd !important;  /* very light cyan */#}
+{#    }#}
+{##}
+{#    .table tbody td {#}
+{#      color: #102a41;               /* navy-ish text */#}
+{#      font-weight: 400;#}
+{#      border-bottom: 1px solid #c6dcee;#}
+{#      border-right: 1px solid #d4e5f2;#}
+{#      padding: 12px 10px;#}
+{#      vertical-align: middle;#}
+{#    }#}
+{##}
+{#    .table tbody td:last-child {#}
+{#      border-right: none;#}
+{#    }#}
+{##}
+{#    /* stripe rows alternate — light cyan tint for better readability */#}
+{#    .table-striped > tbody > tr:nth-of-type(odd) {#}
+{#      background-color: #f6fcff;   /* icy white-cyan */#}
+{#    }#}
+{##}
+{#    /* datatables search & info bar with navy/cyan touches */#}
+{#    .dataTables_wrapper .dataTables_length label,#}
+{#    .dataTables_wrapper .dataTables_filter label,#}
+{#    .dataTables_wrapper .dataTables_info,#}
+{#    .dataTables_wrapper .dataTables_paginate {#}
+{#      color: #e2f0fa;               /* white-cyan on navy background */#}
+{#      font-weight: 400;#}
+{#    }#}
+{##}
+{#    /* select and input fields – cyan borders, navy background */#}
+{#    .dataTables_wrapper .dataTables_length select,#}
+{#    .dataTables_wrapper .dataTables_filter input {#}
+{#      background-color: #ffffff;#}
+{#      border: 2px solid #0b3d5f;#}
+{#      border-radius: 30px;#}
+{#      padding: 6px 14px;#}
+{#      color: #02243b;#}
+{#      font-weight: 400;#}
+{#      outline: none;#}
+{#      transition: 0.2s;#}
+{#    }#}
+{##}
+{#    .dataTables_wrapper .dataTables_length select:focus,#}
+{#    .dataTables_wrapper .dataTables_filter input:focus {#}
+{#      border-color: #18bfe9;#}
+{#      box-shadow: 0 0 0 4px rgba(20, 180, 220, 0.3);#}
+{#    }#}
+{##}
+{#    /* pagination buttons – navy / cyan */#}
+{#    .dataTables_wrapper .dataTables_paginate .paginate_button {#}
+{#      background: #173759;        /* navy */#}
+{#      border: 1px solid #24759e;#}
+{#      color: #ffffff !important;#}
+{#      border-radius: 40px;#}
+{#      margin: 0 3px;#}
+{#      padding: 6px 14px;#}
+{#      font-weight: 500;#}
+{#    }#}
+{##}
+{#    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {#}
+{#      background: #216e94 !important; /* cyan-navy mix */#}
+{#      border: 1px solid #59d3f0;#}
+{#      color: white !important;#}
+{#    }#}
+{##}
+{#    .dataTables_wrapper .dataTables_paginate .paginate_button.current {#}
+{#      background: #28bcd4 !important; /* vivid cyan */#}
+{#      border: 1px solid #a1edff;#}
+{#      color: #0a1f33 !important;#}
+{#      font-weight: 700;#}
+{#    }#}
+{##}
+{#    /* info text */#}
+{#    .dataTables_wrapper .dataTables_info {#}
+{#      color: #c0e3f5;#}
+{#      padding-top: 14px;#}
+{#    }#}
+{##}
+{#    /* adjust length and filter on navy background */#}
+{#    .dataTables_wrapper .dataTables_length,#}
+{#    .dataTables_wrapper .dataTables_filter {#}
+{#      margin-bottom: 20px;#}
+{#      color: #d1efff;#}
+{#    }#}
+{##}
+{#    /* make filter label white-cyan */#}
+{#    .dataTables_wrapper .dataTables_filter label {#}
+{#      color: #b3e2fc;#}
+{#    }#}
+{##}
+{#    /* remove default bootstrap table striped background overrides */#}
+{#    .table-striped > tbody > tr:nth-of-type(odd) > * {#}
+{#      color: unset;#}
+{#    }#}
+{##}
+{#    /* small responsive */#}
+{#    @media (max-width: 768px) {#}
+{#      .container.mt-5 {#}
+{#        padding: 1rem;#}
+{#      }#}
+{#    }#}
+{##}
+{#    /* ensure header/footer (included separately) are not altered.#}
+{#       The include files will insert their own styles; this only styles the container.#}
+{#       No global reset that leaks outside */#}
+{#  </style>#}
+{#</head>#}
+{#<body>#}
+{#  <!-- header include – remains exactly as original (no effect from styles above) -->#}
+{#  {% include 'header.html' %}#}
+{#  <br><br><br>#}
+{##}
+{#  <!-- main content: navy/cyan/white theme applied inside container -->#}
+{#  <div class="container mt-5">#}
+{#    <h2 class="mb-4">REGISTERED USERS</h2>#}
+{#    <table id="registrationTable" class="table table-striped table-bordered">#}
+{#      <thead>#}
+{#        <tr>#}
+{#          <th>Sl no</th>#}
+{#          <th>Name</th>#}
+{#          <th>ph_no</th>#}
+{#          <th>email</th>#}
+{#          <th>place</th>#}
+{#          <th>pin</th>#}
+{#          <th>post</th>#}
+{#          <th>photo</th>#}
+{#        </tr>#}
+{#      </thead>#}
+{#      <tbody>#}
+{#      {% for i in data %}#}
+{#        <!-- Sample Data Row – uses dynamic context -->#}
+{#        <tr>#}
+{#          <td>{{ forloop.counter }}</td>#}
+{#          <td>{{ i.name }}</td><!-- note: LOGIN column uses review (as in original) -->#}
+{#          <td>{{ i.ph_no }}</td>#}
+{#          <td>{{ i.email }}</td>#}
+{#          <td>{{ i.place }}</td>#}
+{#          <td>{{ i.pin }}</td>#}
+{#          <td>{{ i.post }}</td>#}
+{#          <td><img src="{{ i.photo }}" height="50" width="50" alt=""></td>#}
+{#        </tr>#}
+{#      {% endfor %}#}
+{#      </tbody>#}
+{#    </table>#}
+{#  </div>#}
+{##}
+{#  <!-- footer include – unchanged, separate from theme -->#}
+{#  {% include 'footer.html' %}#}
+{#  <br><br><br><br><br><br>#}
+{#  <!-- Scripts (same as original) -->#}
+{#  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>#}
+{#  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>#}
+{#  <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>#}
+{#  <script>#}
+{#    $(document).ready(function () {#}
+{#      $('#registrationTable').DataTable({#}
+{#        // optional: customise language, but keep default#}
+{#        pageLength: 10,#}
+{#        lengthMenu: [5, 10, 25, 50],#}
+{#        order: []#}
+{#      });#}
+{#    });#}
+{#  </script>#}
+{#</body>#}
+{#</html>#}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Registered Users</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
+<style>
+
+body{
+background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+font-family: 'Segoe UI',sans-serif;
+}
+
+/* main container */
+
+.container.mt-5{
+background: rgba(255,255,255,0.05);
+backdrop-filter: blur(10px);
+border-radius:20px;
+padding:30px;
+box-shadow:0 10px 40px rgba(0,0,0,0.5);
+border:1px solid rgba(255,255,255,0.1);
+}
+
+/* title */
+
+.container h2{
+color:#7de3ff;
+font-weight:600;
+margin-bottom:25px;
+border-left:6px solid #00d4ff;
+padding-left:15px;
+}
+
+/* table */
+
+.table{
+background:white;
+border-radius:15px;
+overflow:hidden;
+}
+
+.table thead{
+background:#0b1f3b;
+color:#7de3ff;
+}
+
+.table thead th{
+border:none;
+padding:14px;
+font-weight:600;
+}
+
+.table tbody td{
+vertical-align:middle;
+padding:12px;
+}
+
+.table tbody tr{
+transition:0.3s;
+}
+
+.table tbody tr:hover{
+background:#e6f9ff;
+transform:scale(1.01);
+}
+
+/* image */
+
+.table img{
+border-radius:50%;
+border:2px solid #00c3ff;
+}
+
+/* datatable search */
+
+.dataTables_wrapper .dataTables_filter input{
+border-radius:25px;
+border:2px solid #0b1f3b;
+padding:6px 15px;
+}
+
+/* select */
+
+.dataTables_wrapper .dataTables_length select{
+border-radius:20px;
+border:2px solid #0b1f3b;
+padding:4px 10px;
+}
+
+/* pagination */
+
+.dataTables_wrapper .dataTables_paginate .paginate_button{
+background:#0b1f3b;
+color:white !important;
+border-radius:25px;
+margin:2px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current{
+background:#00c3ff !important;
+color:black !important;
+}
+
+</style>
+</head>
+
+<body>
+
+{% include 'header.html' %}
+<br><br><br>
+
+<div class="container mt-5">
+
+<h2>REGISTERED USERS</h2>
+
+<table id="registrationTable" class="table table-striped">
+
+<thead>
+<tr>
+<th>Sl no</th>
+<th>Name</th>
+<th>Phone</th>
+<th>Email</th>
+<th>Place</th>
+<th>Pin</th>
+<th>Post</th>
+<th>Photo</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for i in data %}
+<tr>
+<td>{{ forloop.counter }}</td>
+<td>{{ i.name }}</td>
+<td>{{ i.ph_no }}</td>
+<td>{{ i.email }}</td>
+<td>{{ i.place }}</td>
+<td>{{ i.pin }}</td>
+<td>{{ i.post }}</td>
+<td>
+<img src="{{ i.photo }}" height="50" width="50">
+</td>
+</tr>
+{% endfor %}
+
+</tbody>
+</table>
+
+</div>
+
+{% include 'footer.html' %}
+
+<br><br><br><br><br>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+
+$(document).ready(function () {
+$('#registrationTable').DataTable({
+pageLength:10,
+lengthMenu:[5,10,25,50],
+order:[]
+});
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,752 @@
+{#{%  include 'header.html' %}#}
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#  <meta charset="UTF-8">#}
+{#  <title>Registration Data Table</title>#}
+{#  <!-- Bootstrap CSS -->#}
+{#  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">#}
+{#  <!-- DataTables CSS -->#}
+{#  <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">#}
+{#</head>#}
+{#<body>#}
+{#  <div class="container mt-5">#}
+{#    <h2 class="mb-4">Registered Users</h2>#}
+{#    <table id="registrationTable" class="table table-striped table-bordered">#}
+{#      <thead>#}
+{#        <tr>#}
+{#          <th>Sl no</th>#}
+{#          <th>Type</th>#}
+{#            <th>Action</th>#}
+{##}
+{#        </tr>#}
+{#      </thead>#}
+{#      <tbody>#}
+{#      {% for i in data %}#}
+{#        <!-- Sample Data Row -->#}
+{#        <tr>#}
+{#          <td>{{ forloop.counter }}</td>#}
+{#          <td>{{ i.type }}</td>#}
+{#        <td><a href="/myapp/edit_category/{{ i.id }}">Edit</a>#}
+{#            <a href="/myapp/delete_category/{{ i.id }}">Delete</a></td>#}
+{#        </tr>#}
+{#        <!-- Add more rows dynamically from backend -->#}
+{#      {% endfor %}#}
+{#      </tbody>#}
+{#    </table>#}
+{#  </div>#}
+{##}
+{#  <!-- Scripts -->#}
+{#  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>#}
+{#  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>#}
+{#  <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>#}
+{#  <script>#}
+{#    $(document).ready(function () {#}
+{#      $('#registrationTable').DataTable();#}
+{#    });#}
+{#  </script>#}
+{#</body>#}
+{#</html>#}
+{##}
+{#{% include 'footer.html' %}#}
+
+
+
+
+{#{% include 'header.html' %}#}
+{##}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#  <meta charset="UTF-8">#}
+{#  <title>Category Management · Navy · Cyan · White</title>#}
+{#  <!-- Bootstrap CSS -->#}
+{#  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">#}
+{#  <!-- DataTables CSS -->#}
+{#  <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">#}
+{#  <!-- Font Awesome for icons -->#}
+{#  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">#}
+{#  <!-- custom theme: navy/cyan/white -->#}
+{#  <style>#}
+{#    /* ===== THEME: NAVY + CYAN + WHITE ===== */#}
+{#    body {#}
+{#      background-color: #eef5fc;#}
+{#      margin: 0;#}
+{#      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;#}
+{#    }#}
+{##}
+{#    /* main container – navy panel */#}
+{#    .container.mt-5 {#}
+{#      background: linear-gradient(145deg, #0b1f3b 0%, #0e2742 100%);#}
+{#      border-radius: 28px 28px 24px 24px;#}
+{#      padding: 2rem 1.8rem 2.2rem 1.8rem;#}
+{#      box-shadow: 0 20px 30px -8px rgba(2, 20, 45, 0.5);#}
+{#      border: 1px solid #2c4b74;#}
+{#      max-width: 900px;#}
+{#    }#}
+{##}
+{#    /* heading in cyan */#}
+{#    .container h2 {#}
+{#      color: #9ee6f8;#}
+{#      font-weight: 600;#}
+{#      letter-spacing: 0.5px;#}
+{#      text-shadow: 0 2px 4px #0a1a2f;#}
+{#      border-left: 6px solid #25c2e0;#}
+{#      padding-left: 20px;#}
+{#      margin-top: 6px;#}
+{#      margin-bottom: 32px;#}
+{#      font-size: 2.2rem;#}
+{#      display: flex;#}
+{#      align-items: center;#}
+{#      gap: 12px;#}
+{#    }#}
+{##}
+{#    .container h2 i {#}
+{#      color: #41d9fd;#}
+{#      font-size: 2rem;#}
+{#      filter: drop-shadow(0 2px 4px #0a2a40);#}
+{#    }#}
+{##}
+{#    /* add category button - positioned with heading */#}
+{#    .header-action {#}
+{#      display: flex;#}
+{#      justify-content: space-between;#}
+{#      align-items: center;#}
+{#      flex-wrap: wrap;#}
+{#      margin-bottom: 20px;#}
+{#    }#}
+{##}
+{#    .btn-add {#}
+{#      display: inline-flex;#}
+{#      align-items: center;#}
+{#      gap: 10px;#}
+{#      background: linear-gradient(135deg, #1f5890 0%, #1973b0 100%);#}
+{#      color: white;#}
+{#      padding: 12px 28px;#}
+{#      border-radius: 50px;#}
+{#      text-decoration: none;#}
+{#      font-weight: 600;#}
+{#      font-size: 1rem;#}
+{#      border: 1px solid #47b5e0;#}
+{#      box-shadow: 0 8px 16px -4px rgba(0,80,140,0.5);#}
+{#      transition: all 0.25s;#}
+{#    }#}
+{##}
+{#    .btn-add i {#}
+{#      color: #b1ecff;#}
+{#    }#}
+{##}
+{#    .btn-add:hover {#}
+{#      background: linear-gradient(135deg, #236bb0 0%, #1d8ad0 100%);#}
+{#      transform: translateY(-3px);#}
+{#      box-shadow: 0 15px 22px -6px #0b3f66;#}
+{#      color: white;#}
+{#    }#}
+{##}
+{#    /* ---- datatable customisation ---- */#}
+{#    .table {#}
+{#      background-color: #ffffff;#}
+{#      border-radius: 18px;#}
+{#      overflow: hidden;#}
+{#      box-shadow: 0 8px 20px rgba(0,20,50,0.5);#}
+{#      border: 1px solid #345f8c;#}
+{#      margin-bottom: 0;#}
+{#    }#}
+{##}
+{#    /* table header – navy & cyan */#}
+{#    .table thead {#}
+{#      background-color: #0a2647;#}
+{#      border-bottom: 3px solid #20b8d4;#}
+{#    }#}
+{##}
+{#    .table thead th {#}
+{#      background-color: #0a2647;#}
+{#      color: #cdf2fc;#}
+{#      font-weight: 600;#}
+{#      font-size: 1rem;#}
+{#      text-transform: uppercase;#}
+{#      letter-spacing: 0.4px;#}
+{#      border-right: 1px solid #254b70;#}
+{#      padding: 14px 12px;#}
+{#      vertical-align: middle;#}
+{#    }#}
+{##}
+{#    .table thead th:last-child {#}
+{#      border-right: none;#}
+{#    }#}
+{##}
+{#    /* table body rows */#}
+{#    .table tbody tr {#}
+{#      background-color: #ffffff;#}
+{#      transition: 0.15s;#}
+{#    }#}
+{##}
+{#    .table tbody tr:hover {#}
+{#      background-color: #e1f3fd !important;#}
+{#    }#}
+{##}
+{#    .table tbody td {#}
+{#      color: #102a41;#}
+{#      font-weight: 400;#}
+{#      border-bottom: 1px solid #c6dcee;#}
+{#      border-right: 1px solid #d4e5f2;#}
+{#      padding: 14px 12px;#}
+{#      vertical-align: middle;#}
+{#    }#}
+{##}
+{#    .table tbody td:last-child {#}
+{#      border-right: none;#}
+{#    }#}
+{##}
+{#    /* stripe rows alternate */#}
+{#    .table-striped > tbody > tr:nth-of-type(odd) {#}
+{#      background-color: #f6fcff;#}
+{#    }#}
+{##}
+{#    /* category type badge */#}
+{#    .category-badge {#}
+{#      display: inline-flex;#}
+{#      align-items: center;#}
+{#      gap: 10px;#}
+{#      background: linear-gradient(135deg, #e3f0fc 0%, #d1e8fa 100%);#}
+{#      padding: 8px 22px 8px 18px;#}
+{#      border-radius: 40px;#}
+{#      font-weight: 600;#}
+{#      color: #0e4b77;#}
+{#      border: 1px solid #8dc0e6;#}
+{#      font-size: 1rem;#}
+{#    }#}
+{##}
+{#    .category-badge i {#}
+{#      color: #1f6e9c;#}
+{#    }#}
+{##}
+{#    /* action buttons */#}
+{#    .action-buttons {#}
+{#      display: flex;#}
+{#      gap: 8px;#}
+{#      flex-wrap: wrap;#}
+{#    }#}
+{##}
+{#    .btn-edit {#}
+{#      display: inline-flex;#}
+{#      align-items: center;#}
+{#      gap: 6px;#}
+{#      background: linear-gradient(135deg, #1f5890 0%, #1973b0 100%);#}
+{#      color: white !important;#}
+{#      padding: 8px 18px;#}
+{#      border-radius: 40px;#}
+{#      text-decoration: none;#}
+{#      font-weight: 500;#}
+{#      font-size: 0.9rem;#}
+{#      border: 1px solid #47b5e0;#}
+{#      transition: all 0.2s;#}
+{#      box-shadow: 0 4px 10px rgba(0,60,120,0.3);#}
+{#    }#}
+{##}
+{#    .btn-edit i {#}
+{#      color: #b1ecff;#}
+{#    }#}
+{##}
+{#    .btn-edit:hover {#}
+{#      background: linear-gradient(135deg, #236bb0 0%, #1d8ad0 100%);#}
+{#      transform: translateY(-2px);#}
+{#      box-shadow: 0 8px 15px rgba(0,100,180,0.4);#}
+{#      color: white !important;#}
+{#    }#}
+{##}
+{#    .btn-delete {#}
+{#      display: inline-flex;#}
+{#      align-items: center;#}
+{#      gap: 6px;#}
+{#      background: linear-gradient(135deg, #7a3843 0%, #9f4d5b 100%);#}
+{#      color: white !important;#}
+{#      padding: 8px 18px;#}
+{#      border-radius: 40px;#}
+{#      text-decoration: none;#}
+{#      font-weight: 500;#}
+{#      font-size: 0.9rem;#}
+{#      border: 1px solid #cf7283;#}
+{#      transition: all 0.2s;#}
+{#      box-shadow: 0 4px 10px rgba(130,30,40,0.3);#}
+{#    }#}
+{##}
+{#    .btn-delete i {#}
+{#      color: #ffc0cb;#}
+{#    }#}
+{##}
+{#    .btn-delete:hover {#}
+{#      background: linear-gradient(135deg, #954b58 0%, #b55d6c 100%);#}
+{#      transform: translateY(-2px);#}
+{#      box-shadow: 0 8px 15px rgba(200,70,90,0.4);#}
+{#      color: white !important;#}
+{#    }#}
+{##}
+{#    /* datatables controls */#}
+{#    .dataTables_wrapper .dataTables_length label,#}
+{#    .dataTables_wrapper .dataTables_filter label,#}
+{#    .dataTables_wrapper .dataTables_info,#}
+{#    .dataTables_wrapper .dataTables_paginate {#}
+{#      color: #e2f0fa;#}
+{#      font-weight: 400;#}
+{#    }#}
+{##}
+{#    .dataTables_wrapper .dataTables_length select,#}
+{#    .dataTables_wrapper .dataTables_filter input {#}
+{#      background-color: #ffffff;#}
+{#      border: 2px solid #0b3d5f;#}
+{#      border-radius: 30px;#}
+{#      padding: 6px 16px;#}
+{#      color: #02243b;#}
+{#      font-weight: 400;#}
+{#      outline: none;#}
+{#      transition: 0.2s;#}
+{#    }#}
+{##}
+{#    .dataTables_wrapper .dataTables_filter input {#}
+{#      min-width: 250px;#}
+{#    }#}
+{##}
+{#    .dataTables_wrapper .dataTables_length select:focus,#}
+{#    .dataTables_wrapper .dataTables_filter input:focus {#}
+{#      border-color: #18bfe9;#}
+{#      box-shadow: 0 0 0 4px rgba(20, 180, 220, 0.3);#}
+{#    }#}
+{##}
+{#    .dataTables_wrapper .dataTables_paginate .paginate_button {#}
+{#      background: #173759;#}
+{#      border: 1px solid #24759e;#}
+{#      color: #ffffff !important;#}
+{#      border-radius: 40px;#}
+{#      margin: 0 3px;#}
+{#      padding: 6px 14px;#}
+{#      font-weight: 500;#}
+{#      transition: 0.15s;#}
+{#    }#}
+{##}
+{#    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {#}
+{#      background: #216e94 !important;#}
+{#      border: 1px solid #59d3f0;#}
+{#      color: white !important;#}
+{#    }#}
+{##}
+{#    .dataTables_wrapper .dataTables_paginate .paginate_button.current {#}
+{#      background: #28bcd4 !important;#}
+{#      border: 1px solid #a1edff;#}
+{#      color: #0a1f33 !important;#}
+{#      font-weight: 700;#}
+{#    }#}
+{##}
+{#    .dataTables_wrapper .dataTables_info {#}
+{#      color: #c0e3f5;#}
+{#      padding-top: 14px;#}
+{#    }#}
+{##}
+{#    .dataTables_wrapper .dataTables_length,#}
+{#    .dataTables_wrapper .dataTables_filter {#}
+{#      margin-bottom: 20px;#}
+{#      color: #d1efff;#}
+{#    }#}
+{##}
+{#    .dataTables_wrapper .dataTables_filter label {#}
+{#      color: #b3e2fc;#}
+{#    }#}
+{##}
+{#    /* empty state */#}
+{#    .empty-state {#}
+{#      text-align: center;#}
+{#      padding: 40px 20px;#}
+{#      color: #5a7e9c;#}
+{#    }#}
+{##}
+{#    .empty-state i {#}
+{#      font-size: 3rem;#}
+{#      color: #8bb9d9;#}
+{#      margin-bottom: 15px;#}
+{#    }#}
+{##}
+{#    /* responsive */#}
+{#    @media (max-width: 768px) {#}
+{#      .container.mt-5 {#}
+{#        padding: 1rem;#}
+{#      }#}
+{#      .header-action {#}
+{#        flex-direction: column;#}
+{#        gap: 15px;#}
+{#        align-items: flex-start;#}
+{#      }#}
+{#      .btn-add {#}
+{#        width: 100%;#}
+{#        justify-content: center;#}
+{#      }#}
+{#      .action-buttons {#}
+{#        flex-direction: column;#}
+{#      }#}
+{#      .btn-edit, .btn-delete {#}
+{#        width: 100%;#}
+{#        justify-content: center;#}
+{#      }#}
+{#    }#}
+{#  </style>#}
+{#</head>#}
+{#<body>#}
+{#  <!-- header include -->#}
+{#  {% include 'header.html' %}#}
+{#  <br><br><br>#}
+{##}
+{#  <!-- main content: navy/cyan/white theme -->#}
+{#  <div class="container mt-5">#}
+{#    <div class="header-action">#}
+{#      <h2 class="mb-0">#}
+{#        <i class="fas fa-layer-group"></i> CATEGORY MANAGEMENT#}
+{#      </h2>#}
+{#      <a href="/myapp/add_category" class="btn-add">#}
+{#        <i class="fas fa-plus-circle"></i> ADD NEW CATEGORY#}
+{#        <i class="fas fa-arrow-right"></i>#}
+{#      </a>#}
+{#    </div>#}
+{##}
+{#    <table id="categoryTable" class="table table-striped table-bordered">#}
+{#      <thead>#}
+{#        <tr>#}
+{#          <th><i class="fas fa-hashtag me-1"></i> Sl no</th>#}
+{#          <th><i class="fas fa-tag me-1"></i> Category Type</th>#}
+{#          <th><i class="fas fa-cogs me-1"></i> Actions</th>#}
+{#        </tr>#}
+{#      </thead>#}
+{#      <tbody>#}
+{#      {% for i in data %}#}
+{#        <tr>#}
+{#          <td><span class="fw-semibold">{{ forloop.counter }}</span></td>#}
+{##}
+{#          <td>#}
+{#            <span class="category-badge">#}
+{#              <i class="fas fa-tag"></i>#}
+{#              {{ i.type }}#}
+{#            </span>#}
+{#          </td>#}
+{##}
+{#          <td>#}
+{#            <div class="action-buttons">#}
+{#              <a href="/myapp/edit_category/{{ i.id }}" class="btn-edit">#}
+{#                <i class="fas fa-edit"></i> EDIT#}
+{#              </a>#}
+{#              <a href="/myapp/delete_category/{{ i.id }}" class="btn-delete"#}
+{#                 onclick="return confirm('Are you sure you want to delete this category?')">#}
+{#                <i class="fas fa-trash-alt"></i> DELETE#}
+{#              </a>#}
+{#            </div>#}
+{#          </td>#}
+{#        </tr>#}
+{##}
+{#        </tr>#}
+{#      {% endfor %}#}
+{#      </tbody>#}
+{#    </table>#}
+{##}
+{#    <!-- category stats footer -->#}
+{#    <div class="text-center mt-4">#}
+{#      <span style="color: #5f8fb0; font-size: 0.9rem;">#}
+{#        <i class="fas fa-layer-group me-2" style="color: #3296c9;"></i>#}
+{#        TOTAL CATEGORIES: {{ data|length }}#}
+{#        <i class="fas fa-layer-group ms-2" style="color: #3296c9;"></i>#}
+{#      </span>#}
+{#    </div>#}
+{#  </div>#}
+{#  <br><br>#}
+{#  <!-- footer include -->#}
+{#  {% include 'footer.html' %}#}
+{#  <br><br><br>#}
+{##}
+{#  <!-- Scripts -->#}
+{#  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>#}
+{#  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>#}
+{#  <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>#}
+{#  <script>#}
+{#    $(document).ready(function () {#}
+{#      $('#categoryTable').DataTable({#}
+{#        pageLength: 10,#}
+{#        lengthMenu: [5, 10, 25, 50],#}
+{#        order: [[0, 'asc']],#}
+{#        language: {#}
+{#          search: "<i class='fas fa-search' style='color: #8ec9ff; margin-right: 6px;'></i> _INPUT_",#}
+{#          searchPlaceholder: "Search categories...",#}
+{#          emptyTable: "No categories available",#}
+{#          info: "Showing _START_ to _END_ of _TOTAL_ categories",#}
+{#          infoEmpty: "Showing 0 to 0 of 0 categories",#}
+{#          infoFiltered: "(filtered from _MAX_ total categories)"#}
+{#        },#}
+{#        columnDefs: [#}
+{#          { orderable: false, targets: [2] } // Disable ordering on actions column#}
+{#        ]#}
+{#      });#}
+{#    });#}
+{##}
+{#    // Add confirmation for delete#}
+{#    function confirmDelete() {#}
+{#      return confirm('Are you sure you want to delete this category? This action cannot be undone.');#}
+{#    }#}
+{#  </script>#}
+{#</body>#}
+{#</html>#}
+{#{% include 'footer.html' %}#}
+{##}
+
+
+{% include 'header.html' %}
+<br>
+<br>
+<br>
+<br>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Category Management</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- DataTables Bootstrap 5 integration -->
+  <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    .content-wrapper {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 2rem 2rem 1rem 1rem;
+      padding: 2rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      margin: 2rem auto;
+    }
+    .page-header {
+      background: linear-gradient(120deg, #ff6b6b, #4ecdc4);
+      padding: 1.5rem 2rem;
+      border-radius: 1rem;
+      margin-bottom: 2rem;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .page-header h2 {
+      margin: 0;
+      font-weight: 600;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    .page-header h2 i {
+      font-size: 2rem;
+      margin-right: 0.5rem;
+    }
+    .btn-add {
+      background: white;
+      color: #4ecdc4;
+      font-weight: 600;
+      border: none;
+      padding: 0.6rem 1.5rem;
+      border-radius: 2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .btn-add:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      background: #f8f9fa;
+      color: #ff6b6b;
+    }
+    .table-container {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .table thead th {
+      background: linear-gradient(45deg, #ffd93d, #ff9a3c);
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      border: none;
+    }
+    .table tbody tr {
+      transition: background 0.2s;
+    }
+    .table tbody tr:hover {
+      background: #fff3e0;
+    }
+    .btn-icon {
+      padding: 0.35rem 0.7rem;
+      margin: 0 3px;
+      border-radius: 2rem;
+      font-size: 0.9rem;
+    }
+    .btn-icon i {
+      font-size: 1.1rem;
+    }
+    .btn-edit {
+      background: #4ecdc4;
+      color: white;
+      border: none;
+    }
+    .btn-edit:hover {
+      background: #3bb2a9;
+      color: white;
+    }
+    .btn-delete {
+      background: #ff6b6b;
+      color: white;
+      border: none;
+    }
+    .btn-delete:hover {
+      background: #e55a5a;
+      color: white;
+    }
+    .empty-row td {
+      padding: 3rem;
+      background: #f8f9fa;
+      color: #6c757d;
+      font-style: italic;
+      border-radius: 0 0 1rem 1rem;
+    }
+    /* DataTable custom styling */
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter {
+      margin-bottom: 1.5rem;
+    }
+    .dataTables_wrapper .dataTables_filter input {
+      border: 2px solid #ff9a3c;
+      border-radius: 2rem;
+      padding: 0.4rem 1rem;
+    }
+    .dataTables_wrapper .dataTables_filter input:focus {
+      border-color: #ff6b6b;
+      box-shadow: none;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="content-wrapper">
+      <!-- Colorful Header -->
+      <div class="page-header">
+        <h2>
+          <i class="bi bi-tags-fill"></i>
+          Category Management
+        </h2>
+        <a href="/myapp/add_category/" class="btn-add">
+          <i class="bi bi-plus-circle me-1"></i> Add New Category
+        </a>
+      </div>
+
+      <!-- Table Card -->
+      <div class="table-container">
+        <table id="categoryTable" class="table align-middle mb-0" style="width:100%">
+          <thead>
+            <tr>
+              <th style="width: 5%">#</th>
+              <th>Category Type</th>
+              <th style="width: 15%" class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in data %}
+            <tr>
+              <td><span class="badge bg-secondary">{{ forloop.counter }}</span></td>
+              <td><span class="fw-bold">{{ i.type }}</span></td>
+              <td class="text-center">
+                <a href="/myapp/edit_category/{{ i.id }}" class="btn btn-icon btn-edit" title="Edit">
+                  <i class="bi bi-pencil-square"></i>
+                </a>
+                <a href="#" class="btn btn-icon btn-delete" title="Delete"
+                   onclick="confirmDelete('{{ i.id }}', '{{ i.type|escapejs }}'); return false;">
+                  <i class="bi bi-trash"></i>
+                </a>
+              </td>
+            </tr>
+            {% empty %}
+            <tr class="empty-row">
+              <td colspan="3" class="text-center">
+                <i class="bi bi-emoji-frown fs-3 d-block mb-2"></i>
+                No categories found. Click "Add New Category" to create one.
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal (Colorful) -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            Confirm Deletion
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="fs-5">Are you sure you want to delete <strong id="categoryName"></strong>?</p>
+          <p class="text-muted">This action cannot be undone.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <i class="bi bi-x-circle me-1"></i> Cancel
+          </button>
+          <a href="#" id="confirmDeleteBtn" class="btn btn-danger">
+            <i class="bi bi-trash me-1"></i> Delete
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      {% if data %}
+      $('#categoryTable').DataTable({
+        pageLength: 10,
+        lengthMenu: [5, 10, 25, 50, 100],
+        language: {
+          search: "Search categories:",
+          lengthMenu: "Show _MENU_ entries",
+          info: "Showing _START_ to _END_ of _TOTAL_ categories",
+          emptyTable: "No categories available",
+          zeroRecords: "No matching categories found"
+        },
+        columnDefs: [
+          { orderable: false, targets: 2 }
+        ]
+      });
+      {% endif %}
+    });
+
+    function confirmDelete(categoryId, categoryName) {
+      document.getElementById('categoryName').textContent = categoryName;
+      document.getElementById('confirmDeleteBtn').href = '/myapp/delete_category/' + categoryId;
+      var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+      deleteModal.show();
+    }
+  </script>
+</body>
+</html>
+
+{% include 'footer.html' %}
